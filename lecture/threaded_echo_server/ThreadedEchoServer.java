@@ -25,7 +25,7 @@ public class ThreadedEchoServer{
  
     //create an instance of an EchoServer and start it
     public static void main(String[] args)throws Exception{
-    ThreadedEchoServer echo = new ThreadedEchoServer(8189);
+    EchoServer echo = new EchoServer(8189);
     echo.go();
     }
 }
