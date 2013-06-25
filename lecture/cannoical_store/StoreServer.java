@@ -3,10 +3,10 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.io.PrintWriter;
  
-public class ThreadedEchoServer{
+public class StoreServer{
     private int port;
  
-    ThreadedEchoServer(int port){
+    StoreServer(int port){
     this.port = port;
     }
  
@@ -23,9 +23,9 @@ public class ThreadedEchoServer{
     }
     }
  
-    //create an instance of an EchoServer and start it
+    //create an instance of an StoreServer and start it
     public static void main(String[] args){
-    ThreadedEchoServer echo = new ThreadedEchoServer(8189);
+    StoreServer echo = new StoreServer(8189);
     echo.go();
     }
 }
@@ -47,15 +47,23 @@ class ChattingServer implements Runnable{
         //getInputStream() and getOutputStream() throw IOException
         Scanner      in = new Scanner(sock.getInputStream());
         PrintWriter out = new PrintWriter(sock.getOutputStream(),true);
-        out.println("Welcome to the echo server. Enter exit end");
+        out.println("Welcome to the Store server. Enter exit end");
         while (!done){
         String input = in.nextLine();
         if (input.equalsIgnoreCase("exit")){
             done = true;
         }
         else{
-            System.out.println(input);
-            out.println(input);
+            // here we want to add list and buy methods
+            //which operate on Store object
+            if (input.equals("list")){
+            String output = store.list();
+            out.println(output);
+            }
+            else if (input.startsWith("buy")){
+            //tokenize arguments
+            int ret = store.buy(arg1,arg2);
+            }
         }
         }
         sock.close();//IOException

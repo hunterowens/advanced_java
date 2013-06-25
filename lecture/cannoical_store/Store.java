@@ -3,10 +3,10 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.io.PrintWriter;
  
-public class ThreadedEchoServer{
+public class Store{
     private int port;
  
-    ThreadedEchoServer(int port){
+    Store(int port){
     this.port = port;
     }
  
@@ -47,15 +47,15 @@ class ChattingServer implements Runnable{
         //getInputStream() and getOutputStream() throw IOException
         Scanner      in = new Scanner(sock.getInputStream());
         PrintWriter out = new PrintWriter(sock.getOutputStream(),true);
-        out.println("Welcome to the echo server. Enter exit end");
+        out.println("Welcome to the Store server. Enter exit end");
         while (!done){
         String input = in.nextLine();
         if (input.equalsIgnoreCase("exit")){
             done = true;
         }
         else{
-            System.out.println(input);
-            out.println(input);
+            // here we want to add list and buy methods
+            //which operate on Store object
         }
         }
         sock.close();//IOException
