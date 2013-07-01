@@ -1,0 +1,3 @@
+set echo on
+javac -cp .:/Users/siegela67/Dropbox/cspp51037  TTTClient.java
+java -cp .:/Users/siegela67/Dropbox/cspp51037  lesson2.examples.tictactoe.TTT_standalone.TTTClient
